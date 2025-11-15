@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CryptoTrade - Trade Crypto with Confidence & Speed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #1e293b;
+      --dark: #0f172a;
+      --darker: #020617;
+      --light: #f8fafc;
+      --gray: #64748b;
+      --gray-light: #94a3b8;
+      --success: #10b981;
+      --danger: #ef4444;
+      --warning: #f59e0b;
+    }
+
+    body {
+      background-color: var(--darker);
+      color: var(--light);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    /* Background Image Styles */
+    .bg-image {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(rgba(2, 7, 23, 0.85), rgba(2, 7, 23, 0.95)), 
+                  url('https://th.bing.com/th/id/OIG2.pojOR5XnhcqyE0qT5JNh?r=0&o=5&cb=ucfimg2&dpr=1.4&pid=ImgGn&ucfimg=1') no-repeat center center;
+      background-size: cover;
+      z-index: -1;
+    }
+
+    .section-bg {
+      background-color: rgba(15, 23, 42, 0.7);
+      backdrop-filter: blur(10px);
+      border-radius: 12px;
+      padding: 30px;
+      margin: 20px 0;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    /* Header Styles */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 5%;
+      background-color: rgba(15, 23, 42, 0.9);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    .logo img {
+      height: 40px;
+      filter: brightness(0) invert(1);
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: var(--light);
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    nav a:hover {
+      color: var(--primary);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: var(--primary);
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    /* Hero Section */
+    .hero-section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+    }
+
+    .hero-text {
+      flex: 1;
+    }
+
+    .hero-text h1 {
+      font-size: 3.2rem;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      background: linear-gradient(to right, #fff, var(--primary));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-text p {
+      font-size: 1.2rem;
+      color: var(--gray-light);
+      margin-bottom: 30px;
+      max-width: 90%;
+    }
+
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      border: none;
+      font-size: 1rem;
+      margin-right: 15px;
+      margin-bottom: 10px;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 5px 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-secondary {
+      background-color: transparent;
+      color: var(--light);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-secondary:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+      transform: translateY(-3px);
+    }
+
+    /* Stats Section */
+    .stats-section {
+      padding: 60px 0;
+    }
+
+    .stats-container {
+      display: flex;
+      justify-content: space-around;
+      text-align: center;
+    }
+
+    .stat-item {
+      flex: 1;
+    }
+
+    .stat-value {
+      font-size: 2.8rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .stat-label {
+      font-size: 1.1rem;
+      color: var(--gray-light);
+    }
+
+    /* Features Section */
+    .features-section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      margin-bottom: 50px;
+      color: var(--light);
+    }
+
+    .feature-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+    }
+
+    .feature-card {
+      background: rgba(30, 41, 59, 0.7);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+    }
+
+    .feature-card i {
+      font-size: 3rem;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+
+    .feature-card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      color: var(--light);
+    }
+
+    .feature-card p {
+      color: var(--gray-light);
+    }
+
+    /* Crypto Prices Section */
+    .prices-section {
+      padding: 80px 0;
+    }
+
+    .prices-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .price-card {
+      background: rgba(30, 41, 59, 0.7);
+      border-radius: 12px;
+      padding: 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      border-left: 4px solid var(--primary);
+      transition: transform 0.3s;
+    }
+
+    .price-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .crypto-name {
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-bottom: 5px;
+    }
+
+    .crypto-symbol {
+      color: var(--gray);
+      font-size: 0.9rem;
+      margin-bottom: 15px;
+    }
+
+    .crypto-price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .price-change {
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+
+    .positive {
+      color: var(--success);
+    }
+
+    .negative {
+      color: var(--success);
+    }
+
+    /* Footer */
+    footer {
+      background-color: rgba(2, 6, 23, 0.9);
+      color: white;
+      padding: 50px 0 20px;
+      margin-top: 50px;
+    }
+
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 30px;
+    }
+
+    .footer-logo {
+      flex: 1;
+    }
+
+    .footer-logo-img {
+      height: 40px;
+      margin-bottom: 15px;
+      filter: brightness(0) invert(1);
+    }
+
+    .footer-links {
+      flex: 1;
+    }
+
+    .footer-links h3 {
+      margin-bottom: 20px;
+      font-size: 1.2rem;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #cbd5e1;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 20px;
+      border-top: 1px solid #334155;
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    /* Page Sections */
+    .page-section {
+      display: none;
+      padding: 50px 0;
+      min-height: 70vh;
+    }
+
+    #homepage {
+      display: block;
+    }
+
+    /* Payment Page Styles */
+    .payment-form-group {
+      margin-bottom: 20px;
+    }
+
+    .payment-form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+    }
+
+    .payment-form-group input {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      font-size: 1rem;
+      background-color: rgba(30, 41, 59, 0.7);
+      color: white;
+    }
+
+    .payment-form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
+
+    .submit-button {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      padding: 15px 30px;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: block;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .submit-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    .submit-button:disabled {
+      background-color: var(--gray);
+      cursor: not-allowed;
+      transform: none;
+    }
+
+    #qr-code-display {
+      text-align: center;
+      margin: 20px 0;
+    }
+
+    #qr-code-display img {
+      max-width: 280px;
+      border: 1px solid #334155;
+      border-radius: 12px;
+      padding: 15px;
+      background: white;
+    }
+
+    #wallet-address {
+      background-color: rgba(30, 41, 59, 0.7);
+      padding: 15px;
+      border-radius: 8px;
+      font-family: monospace;
+      margin-bottom: 20px;
+      cursor: pointer;
+      text-align: center;
+      font-weight: 600;
+      border: 1px solid #334155;
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    #wallet-address:hover {
+      background-color: rgba(30, 41, 59, 0.9);
+      border-color: var(--primary);
+    }
+
+    #wallet-address.copied::after {
+      content: '✓ Copied!';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    /* Important Notice */
+    .notice-box {
+      background: rgba(245, 158, 11, 0.1);
+      border: 1px solid var(--warning);
+      border-radius: 8px;
+      padding: 20px;
+      margin: 30px 0;
+    }
+
+    .notice-box h3 {
+      color: var(--warning);
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .notice-box ul {
+      padding-left: 20px;
+    }
+
+    .notice-box li {
+      margin-bottom: 8px;
+      color: var(--gray-light);
+    }
+
+    /* Confirmation Page */
+    .page-header {
+      display: flex;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    .back-button {
+      background: none;
+      border: none;
+      font-size: 1rem;
+      color: var(--primary);
+      cursor: pointer;
+      margin-right: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 6px;
+      transition: background-color 0.3s;
+    }
+
+    .back-button:hover {
+      background-color: rgba(59, 130, 246, 0.1);
+    }
+
+    .page-title {
+      font-size: 1.8rem;
+    }
+
+    /* Waiting Page */
+    #unique-code-display {
+      background-color: rgba(16, 185, 129, 0.1);
+      padding: 20px;
+      border-radius: 8px;
+      font-family: monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      text-align: center;
+      margin: 20px 0;
+      cursor: pointer;
+      border: 2px dashed var(--success);
+      transition: all 0.3s;
+      position: relative;
+    }
+
+    #unique-code-display:hover {
+      background-color: rgba(16, 185, 129, 0.2);
+    }
+
+    #unique-code-display.copied::after {
+      content: '✓ Copied!';
+      position: absolute;
+      top: -30px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--success);
+      color: white;
+      padding: 5px 10px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .whatsapp-btn {
+      background-color: #25d366;
+      text-decoration: none;
+      display: inline-block;
+      text-align: center;
+    }
+
+    .whatsapp-btn:hover {
+      background-color: #128c7e;
+    }
+
+    /* Live Chat Button */
+    .live-chat-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background-color: var(--primary);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+
+    .live-chat-btn:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Loading Spinner */
+    .spinner {
+      border: 4px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top: 4px solid var(--primary);
+      width: 40px;
+      height: 40px;
+      animation: spin 1s linear infinite;
+      margin: 20px auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    /* Alert Messages */
+    .alert {
+      padding: 15px;
+      border-radius: 8px;
+      margin: 15px 0;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    .alert-success {
+      background-color: rgba(16, 185, 129, 0.2);
+      border: 1px solid var(--success);
+      color: var(--success);
+    }
+
+    .alert-error {
+      background-color: rgba(239, 68, 68, 0.2);
+      border: 1px solid var(--danger);
+      color: var(--danger);
+    }
+
+    .alert-warning {
+      background-color: rgba(245, 158, 11, 0.2);
+      border: 1px solid var(--warning);
+      color: var(--warning);
+    }
+
+    /* File Input Styling */
+    .file-input-wrapper {
+      position: relative;
+      overflow: hidden;
+      display: inline-block;
+      width: 100%;
+    }
+
+    .file-input-wrapper input[type=file] {
+      position: absolute;
+      left: 0;
+      top: 0;
+      opacity: 0;
+      cursor: pointer;
+      height: 100%;
+      width: 100%;
+    }
+
+    .file-input-label {
+      display: block;
+      padding: 12px;
+      border: 2px dashed #334155;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      background: rgba(30, 41, 59, 0.5);
+    }
+
+    .file-input-label:hover {
+      border-color: var(--primary);
+      background: rgba(30, 41, 59, 0.7);
+    }
+
+    .file-input-label.has-file {
+      border-color: var(--success);
+      background: rgba(16, 185, 129, 0.1);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero-content {
+        flex-direction: column;
+      }
+
+      .feature-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .prices-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      
+      .stats-container {
+        flex-direction: column;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-text h1 {
+        font-size: 2.5rem;
+      }
+
+      .feature-cards {
+        grid-template-columns: 1fr;
+      }
+
+      .prices-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .btn {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+      }
+
+      .live-chat-btn {
+        bottom: 10px;
+        right: 10px;
+        padding: 10px 16px;
+        font-size: 0.9rem;
+      }
+    }
+
+    /* Animation for page transitions */
+    .page-section {
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Background Image -->
+  <div class="bg-image"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="logo.png" alt="CryptoTrade Logo">
+      <span>CryptoTrade</span>
+    </div>
+    <nav>
+      <a href="#homepage" onclick="showHomePage()">Markets</a>
+      <a href="#homepage" onclick="showHomePage()">Trade</a>
+      <a href="#features" onclick="showHomePage()">Features</a>
+      <a href="#why-us" onclick="showHomePage()">About</a>
+      <button class="btn btn-primary" onclick="showPaymentPage()">Exchange Crypto</button>
+    </nav>
+  </header>
+
+  <!-- HOMEPAGE -->
+  <main id="homepage" class="page-section">
+    <section class="hero-section">
+      <div class="hero-content container">
+        <div class="hero-text">
+          <h1>Exchange USDT with Confidence & Speed</h1>
+          <p>
+            Exchange from your Tether (USDT) wallet to your local currency (fiat) anonymously without ID Verification. 
+            No registration required. No KYC. 100% anonymous. Convert instantly.
+          </p>
+          <button class="btn btn-primary" onclick="showPaymentPage()">Start Trading Now</button>
+          <button class="btn btn-secondary" onclick="scrollToSection('features')">View Markets</button>
+        </div>
+        <div class="hero-image">
+          <img src="hero.png"
+            alt="Crypto Exchange Illustration">
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+      <div class="stats-container container section-bg">
+        <div class="stat-item">
+          <div class="stat-value">1 USDT = ₹115</div>
+          <div class="stat-label">🔗 Sell USDT directly from your blockchain wallet</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">500K+</div>
+          <div class="stat-label">Active Users</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-value">Notice</div>
+          <div class="stat-label">💸 First transaction requires no advance payment — experience our service risk-free.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section" id="features">
+      <div class="container">
+        <h2 class="section-title">Our Features</h2>
+        <div class="feature-cards">
+          <div class="feature-card">
+            <i class="fas fa-exchange-alt"></i>
+            <h3>Exchange Crypto</h3>
+            <p>Swap between different cryptocurrencies with zero hassle. Best exchange rates guaranteed.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Secure Platform</h3>
+            <p>Bank-grade security with multi-layer encryption. Your assets are always protected.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>Instant Transactions</h3>
+            <p>Lightning-fast trades with real-time execution. No delays, no waiting.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Crypto Prices Section -->
+    <section class="prices-section">
+      <div class="container">
+        <h2 class="section-title">Exchange Crypto prices</h2>
+        <p style="text-align: center; margin-bottom: 40px; color: var(--gray-light);">Sell crypto and earn 20% extra reward</p>
+        <div class="prices-grid">
+          <div class="price-card">
+            <div class="crypto-name">Bitcoin</div>
+            <div class="crypto-symbol">BTC</div>
+            <div class="crypto-price">Live price + 20%</div>
+            <div class="price-change positive">+20% bonus</div>
+          </div>
+          <div class="price-card">
+            <div class="crypto-name">Ethereum</div>
+            <div class="crypto-symbol">ETH</div>
+            <div class="crypto-price">Live price + 20%</div>
+            <div class="price-change positive">+20% bonus</div>
+          </div>
+          <div class="price-card">
+            <div class="crypto-name">Cardano</div>
+            <div class="crypto-symbol">ADA</div>
+            <div class="crypto-price">Live price + 20%</div>
+            <div class="price-change negative">+20% bonus</div>
+          </div>
+          <div class="price-card">
+            <div class="crypto-name">Solana</div>
+            <div class="crypto-symbol">SOL</div>
+            <div class="crypto-price">Live price + 20%</div>
+            <div class="price-change positive">+20% bonus</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Us Section -->
+    <section class="features-section" id="why-us">
+      <div class="container">
+        <h2 class="section-title">Why Choose CryptoTrade?</h2>
+        <div class="feature-cards">
+          <div class="feature-card">
+            <i class="fas fa-user-clock"></i>
+            <h3>No Registration Required</h3>
+            <p>Start trading immediately without lengthy sign-up processes.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-user-secret"></i>
+            <h3>Secure & Anonymous</h3>
+            <p>Your privacy is our priority. No personal data collection.</p>
+          </div>
+          <div class="feature-card">
+            <i class="fas fa-chart-line"></i>
+            <h3>Best Exchange Rates</h3>
+            <p>Get the most value for your crypto with our competitive rates.</p>
+          </div>
+        </div>
+        <div style="text-align: center; margin-top: 40px;">
+          <button class="btn btn-primary" onclick="showPaymentPage()">Exchange Crypto Now</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PAYMENT PAGE -->
+  <div class="page-section" id="payment-page">
+    <div class="container">
+      <div class="section-bg">
+        <h2>Step 1: Send Your Crypto</h2>
+        <p>Send the amount of cryptocurrency to the wallet below using the appropriate network.</p>
+        
+        <div class="notice-box">
+          <h3><i class="fas fa-exclamation-triangle"></i> Important Notice</h3>
+          <ul>
+            <li>Use <strong>(BSC) BEP-20 network only</strong> for USDT transactions</li>
+            <li>Minimum transaction: 50 USDT</li>
+            <li>Double-check the wallet address before sending</li>
+            <li>Transactions may take 2-5 minutes to confirm</li>
+            <li>Contact support if you encounter any issues</li>
+          </ul>
+        </div>
+
+        <div id="qr-code-display">
+          <img id="qr-img" src="Qrbepusdt.jpg" alt="QR Code TRC-20">
+        </div>
+
+        <p>Wallet Address (Tap to copy):</p>
+        <div id="wallet-address">0x686ddf65231ca6f76368bfc7abfa3813fd39cb94</div>
+
+        <button class="submit-button" onclick="showConfirmationPage()">I Have Paid / Continue</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONFIRMATION PAGE -->
+  <div class="page-section" id="confirmation-page">
+    <div class="container">
+      <div class="section-bg">
+        <div class="page-header">
+          <h2 class="page-title">Step 2: Confirm Your Payment</h2>
+        </div>
+        <p>Submit your transaction proof below.</p>
+
+        <div id="payment-form">
+          <div class="payment-form-group">
+            <label for="trxid">Transaction ID (TX ID):</label>
+            <input type="text" id="trxid" placeholder="Enter your blockchain transaction ID" required>
+          </div>
+
+          <div class="payment-form-group">
+            <label for="screenshot">Upload Payment Screenshot:</label>
+            <div class="file-input-wrapper">
+              <input type="file" id="screenshot" accept="image/*" required>
+              <label for="screenshot" class="file-input-label" id="file-input-label">
+                <i class="fas fa-cloud-upload-alt"></i> Choose File or Drag & Drop
+              </label>
+            </div>
+            <small style="color: var(--gray-light); display: block; margin-top: 5px;">Supported formats: JPG, PNG, GIF (Max 10MB)</small>
+          </div>
+
+          <div id="upload-status"></div>
+
+          <button type="button" class="submit-button" onclick="submitPaymentProof()" id="submit-button">
+            Confirm and Submit
+          </button>
+          <button class="back-button" onclick="showPaymentPage()"><i class="fas fa-arrow-left"></i> Back</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WAITING PAGE -->
+  <div class="page-section" id="waiting-page">
+    <div class="container">
+      <div class="section-bg">
+        <h2 style="color: var(--success);"><i class="fas fa-check-circle"></i> Submission Received!</h2>
+        <p>Your payment proof has been submitted. Use your unique code below when contacting support.</p>
+        <hr style="border-color: #334155; margin: 30px auto; max-width: 400px;">
+
+        <p>Your Verification Code:</p>
+        <div id="unique-code-display" onclick="copyUniqueCode()" title="Click to copy">
+          <span id="order-code">CT-5A8B2</span>
+        </div>
+
+        <p style="margin-top: 30px;">
+          <a id="whatsapp-link" href="https://t.me/tsexchange302" target="_blank" class="submit-button whatsapp-btn">
+            <i class="fab fa-whatsapp"></i> Send Code to Customer Support
+          </a>
+        </p>
+        <p style="margin-top: 30px;">
+          <button onclick="showHomePage()" class="btn btn-secondary">Go to Homepage</button>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer id="contact">
+    <div class="footer-content container">
+      <div class="footer-logo">
+        <img src="logo.png" alt="CryptoTrade Logo White" class="footer-logo-img">
+        <p>Exchange crypto with confidence and speed. The best platform for instant cryptocurrency exchanges.</p>
+      </div>
+      <div class="footer-links">
+        <h3>Support</h3>
+        <ul>
+          <li><a href="#" onclick="showHomePage()">Help Center</a></li>
+          <li><a href="#" id="footer-support-link">Contact Support</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="copyright container">
+      <p>&copy; 2025 CryptoTrade. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Live Chat Button -->
+  <a id="livechat-link" href="https://t.me/tsexchange302" class="live-chat-btn"><i class="fas fa-comment-alt"></i> LIVE CHAT</a>
+
+  <script>
+    // Global variables
+    let uniqueCode = 'CT-5A8B2';
+
+    // Initialize the application
+    document.addEventListener('DOMContentLoaded', function() {
+      console.log('🚀 CryptoTrade Frontend Initialized');
+      initializeApp();
+    });
+
+    // Initialize application
+    function initializeApp() {
+      setupEventListeners();
+      updateWhatsAppLink();
+    }
+
+    // Setup event listeners
+    function setupEventListeners() {
+      // File input handling
+      const screenshotInput = document.getElementById('screenshot');
+      if (screenshotInput) {
+        screenshotInput.addEventListener('change', handleFileSelect);
+      }
+      
+      // Form submission on Enter key
+      const trxidInput = document.getElementById('trxid');
+      if (trxidInput) {
+        trxidInput.addEventListener('keypress', function(e) {
+          if (e.key === 'Enter') {
+            submitPaymentProof();
+          }
+        });
+      }
+
+      // Drag and drop for file upload
+      const fileInputLabel = document.getElementById('file-input-label');
+      if (fileInputLabel) {
+        fileInputLabel.addEventListener('dragover', function(e) {
+          e.preventDefault();
+          this.classList.add('dragover');
+        });
+
+        fileInputLabel.addEventListener('dragleave', function(e) {
+          e.preventDefault();
+          this.classList.remove('dragover');
+        });
+
+        fileInputLabel.addEventListener('drop', function(e) {
+          e.preventDefault();
+          this.classList.remove('dragover');
+          const files = e.dataTransfer.files;
+          if (files.length > 0) {
+            document.getElementById('screenshot').files = files;
+            handleFileSelect({ target: { files: files } });
+          }
+        });
+      }
+
+      // Wallet address copy functionality
+      const walletAddressElement = document.getElementById('wallet-address');
+      if (walletAddressElement) {
+        walletAddressElement.addEventListener('click', function() {
+          const walletAddress = this.textContent;
+          copyToClipboard(walletAddress, 'wallet-address');
+        });
+      }
+    }
+
+    // Update WhatsApp link with unique code
+    function updateWhatsAppLink() {
+      const whatsappLink = document.getElementById('whatsapp-link');
+      if (whatsappLink) {
+        const message = encodeURIComponent(`My CryptoTrade verification code is: ${uniqueCode}`);
+        whatsappLink.href = `https://wa.me/9234995844?text=${message}`;
+      }
+    }
+
+    // Handle file selection
+    function handleFileSelect(event) {
+      const file = event.target.files[0];
+      const fileInputLabel = document.getElementById('file-input-label');
+      
+      if (file) {
+        // Validate file type
+        const validImageTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
+        if (!validImageTypes.includes(file.type)) {
+          showAlert('❌ Please upload a valid image file (JPEG, PNG, GIF)', 'error');
+          resetFileInput();
+          return;
+        }
+
+        // Validate file size (max 10MB)
+        const maxSize = 10 * 1024 * 1024;
+        if (file.size > maxSize) {
+          showAlert('❌ File size too large. Please upload an image smaller than 10MB.', 'error');
+          resetFileInput();
+          return;
+        }
+
+        // Update UI
+        const fileSize = (file.size / 1024 / 1024).toFixed(2);
+        fileInputLabel.innerHTML = `<i class="fas fa-check-circle" style="color: var(--success);"></i> ${file.name} (${fileSize} MB)`;
+        fileInputLabel.classList.add('has-file');
+        
+        showAlert(`✅ File selected: ${file.name}`, 'success');
+      }
+    }
+
+    // Reset file input
+    function resetFileInput() {
+      document.getElementById('screenshot').value = '';
+      const fileInputLabel = document.getElementById('file-input-label');
+      fileInputLabel.innerHTML = '<i class="fas fa-cloud-upload-alt"></i> Choose File or Drag & Drop';
+      fileInputLabel.classList.remove('has-file');
+    }
+
+    // Page Navigation Functions
+    function showHomePage() {
+      hideAllPages();
+      document.getElementById('homepage').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function showPaymentPage() {
+      hideAllPages();
+      document.getElementById('payment-page').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function showConfirmationPage() {
+      hideAllPages();
+      document.getElementById('confirmation-page').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function showWaitingPage() {
+      hideAllPages();
+      document.getElementById('waiting-page').style.display = 'block';
+      window.scrollTo(0, 0);
+    }
+
+    function hideAllPages() {
+      const pages = document.querySelectorAll('.page-section');
+      pages.forEach(page => page.style.display = 'none');
+    }
+
+    // Scroll to section
+    function scrollToSection(sectionId) {
+      const element = document.getElementById(sectionId);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    // Submit payment proof (static version)
+    function submitPaymentProof() {
+      const trxId = document.getElementById('trxid').value.trim();
+      const screenshotFile = document.getElementById('screenshot').files[0];
+      
+      if (!trxId) {
+        showAlert('❌ Please enter Transaction ID', 'error');
+        document.getElementById('trxid').focus();
+        return;
+      }
+
+      if (!screenshotFile) {
+        showAlert('❌ Please select a screenshot file', 'error');
+        return;
+      }
+
+      console.log('🔍 Starting upload process...');
+      console.log('📝 Transaction ID:', trxId);
+      console.log('📷 File details:', {
+        name: screenshotFile.name,
+        type: screenshotFile.type,
+        size: screenshotFile.size
+      });
+
+      // Show loading state
+      const submitButton = document.getElementById('submit-button');
+      submitButton.disabled = true;
+      submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
+      submitButton.style.opacity = '0.7';
+
+      // Simulate API call with timeout
+      setTimeout(() => {
+        console.log('✅ Upload successful!');
+        showAlert('✅ Payment proof uploaded successfully!', 'success');
+        
+        // Generate new unique code for next transaction
+        uniqueCode = 'CT-' + Math.random().toString(36).substring(2, 8).toUpperCase();
+        document.getElementById('order-code').textContent = uniqueCode;
+        updateWhatsAppLink();
+        
+        setTimeout(() => {
+          showWaitingPage();
+          document.getElementById('trxid').value = '';
+          resetFileInput();
+        }, 1500);
+        
+        // Reset button state
+        submitButton.disabled = false;
+        submitButton.innerHTML = 'Confirm and Submit';
+        submitButton.style.opacity = '1';
+      }, 2000);
+    }
+
+    // Show alert message
+    function showAlert(message, type) {
+      const uploadStatus = document.getElementById('upload-status');
+      if (uploadStatus) {
+        uploadStatus.innerHTML = `<div class="alert alert-${type}">${message}</div>`;
+        
+        setTimeout(() => {
+          if (uploadStatus.innerHTML.includes(message)) {
+            uploadStatus.innerHTML = '';
+          }
+        }, 5000);
+      }
+    }
+
+    // Copy functions with visual feedback
+    function copyUniqueCode() {
+      const codeElement = document.getElementById('order-code');
+      if (codeElement) {
+        const code = codeElement.textContent;
+        copyToClipboard(code, 'unique-code-display');
+      }
+    }
+
+    // Generic copy to clipboard function
+    function copyToClipboard(text, elementId) {
+      navigator.clipboard.writeText(text).then(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.classList.add('copied');
+          setTimeout(() => {
+            element.classList.remove('copied');
+          }, 2000);
+        }
+      }).catch(err => {
+        console.error('❌ Copy failed:', err);
+        showAlert('Failed to copy to clipboard', 'error');
+      });
+    }
+  </script>
+</body>
+</html>
